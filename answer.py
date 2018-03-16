@@ -66,9 +66,9 @@ def get_screenshot():
 
 def get_word_by_img(img):
     """文字提取,调用百度文字识别接口"""
-    App_ID='10823272'
-    API_Key='aFCDfvS6SfknFkQUuXCr8tQ9'
-    SECRET_Key='K6vjemA4Qw3wp6X23KvF1qCbdWSkK7kn'
+    App_ID='使用自己的APP_ID'
+    API_Key='使用自己的API_Key'
+    SECRET_Key='使用自己的SECRET_key'
     client = AipOcr(App_ID,API_Key,SECRET_Key)
     res = client.basicGeneral(img)
     return res
