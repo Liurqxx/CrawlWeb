@@ -43,7 +43,6 @@ def get_screenshot():
     #切出题目
     # title_img = img.crop((20,650,1060,790))
     title_img = img.crop((100, 690, 960, 860))
-    #170+700
     #切出答案
     # answers_img = img.crop((20,795,1060,1055))
     answers_img = img.crop((100, 860, 960, 1560))
@@ -86,14 +85,14 @@ def baidu(question, answers):
     data = {
         'wd':question
     }
-
+    #获取网页搜索的结果信息
     res = requests.get(url,params=data,headers=headers)
     res.encoding = 'utf-8'
     html = res.text
     #分析数据
     for i in range(len(answers)):
         answers[i] = (html.count(answers[i]),answers[i],i)
-
+    #对结果进行排序
     answers.sort(reverse=True)
     return answers
 
@@ -121,12 +120,11 @@ def main():
         # 文字提取
         info = get_word_by_img(img.getvalue())
         print(info)
+        #获取对应的答案信息
         if info['words_result_num'] <5:
             continue
         answers = [x['words'] for x in info['words_result'][-4:]]
         question = ''.join([x['words'] for x in info['words_result'][:-4]])
-        # print(question)
-        # print(answers)
         res = baidu(question,answers)
         print(res)
         click(config['点击参数']['point'][res[0][2]])
