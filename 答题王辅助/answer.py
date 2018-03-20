@@ -8,6 +8,11 @@ from io import BytesIO
 from PIL import Image
 from aip import AipOcr
 
+'''
+    该程序适用于分辨率1920 x 1080
+'''
+
+#点击屏幕的参数
 config = {
     '点击参数':{
         'title':(80,500,1000,880),
