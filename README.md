@@ -15,4 +15,6 @@
 #	运行start.py即可启动程序
 #五：wechat_send_info:
 #	主要功能：给指定微信好友定时发送消息
+#六：爬取mzitu
+#	主要功能：爬取mzitu网站的图片
 #
