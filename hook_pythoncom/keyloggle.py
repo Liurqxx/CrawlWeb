@@ -1,6 +1,6 @@
 # _*_ coding: utf-8 _*_
 '''先安装pyHook和pywin32'''
-#用于监听键盘事件
+# 用于监听键盘事件
 from ctypes import *
 import pythoncom
 import pyHook
