@@ -3,7 +3,7 @@ import win32gui
 import win32ui
 import win32con
 import win32api
-
+'''获取当前窗口的截图，保存到制定路径下'''
 # 获取桌面
 hdesktop = win32gui.GetDesktopWindow()
 
