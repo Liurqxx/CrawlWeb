@@ -1,5 +1,6 @@
 # _*_ coding: utf-8 _*_
 import socket
+'''客户端'''
 
 # 目标地址IP/URL及端口
 target_host = "127.0.0.1"
