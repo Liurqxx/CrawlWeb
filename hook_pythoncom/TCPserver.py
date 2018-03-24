@@ -2,6 +2,8 @@
 import socket
 import threading
 
+'''服务器端'''
+
 # 监听的IP及端口
 bind_ip = "127.0.0.1"
 bind_port = 9999
