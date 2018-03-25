@@ -8,10 +8,10 @@ from threading import Timer
 # 用于登录微信
 bot = Bot()
 # 好友列表
-friends_list = bot.friends()
+#friends_list = bot.friends()
 
 # 组列表
-group_list = bot.groups()
+#group_list = bot.groups()
 
 
 def get_news():
