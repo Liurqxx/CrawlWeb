@@ -37,8 +37,8 @@ def main():
         my_friend.send(u'来自爸爸的心灵鸡汤！')
 
         # 定时发送，每86400秒(一天)发送一次
-        t = Timer(86400, main)
-        t.start()
+        #t = Timer(86400, main)
+        #t.start()
     except Exception as e:
         print(e)
         print('发送失败')
