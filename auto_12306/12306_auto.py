@@ -4,13 +4,13 @@ from json import loads
 import ssl
 
 # 取消/跳过证书验证
-# ssl._create_default_https_context = ssl._create_unverified_context()
+ssl._create_default_https_context = ssl._create_unverified_context()
 
 city = {}
 for i in statiom_names.split('@'):
     if i:
         city[i.split('|')[1]] = i.split('|')[2]
-
+#输入起始和终点站
 from_name = input("请输入始发站(长沙):")
 to_name = input("请输入终点站(成都):")
 train_date = input("请输入乘车日期(格式:2018-02-02):")
