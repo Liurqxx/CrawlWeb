@@ -49,7 +49,7 @@ def main():
             except Exception as e:
                 print('没有匹配到数据')
                 # 将链接保存到本地
-                with open('move\\666.txt', 'a') as f:
+                with open('move\\socare_link.txt', 'a') as f:
                     f.write(dy_link + '\n')
 
 
