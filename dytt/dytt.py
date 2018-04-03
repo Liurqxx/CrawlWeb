@@ -12,7 +12,13 @@ import re
 # 下载页面
 # http://www.ygdy8.net/html/gndy/dyzz/20180314/56482.html
 
+# 下载电影
+def down_move(move_url):
+    # ftp://ygdy8:ygdy8@yg45.dydytt.net:3052/阳光电影www.ygdy8.com.马戏之王.BD.720p.中英双字幕.mkv
+    # 获取电影名
+    names = move_url.split('阳光电影www.ygdy8.com.')
 
+    urllib.request.urlretrieve(move_url, 'move\\' + names[1])
 
 
 def main():
