@@ -7,9 +7,9 @@ import pandas as pd
 
 def main():
     # 设置数据
-    df_iris = pd.read_csv(r'info.csv')
+    df_iris = pd.read_csv(r'iris.csv')
     # 绘制箱形图
-    sns.jointplot(x=df_iris['Sepal length'], y=df_iris['Sepal width'], kind='hex')
+    sns.jointplot(x=df_iris['petal_length'], y=df_iris['sepal_length'], kind='hex')
 
     plt.show()
 
