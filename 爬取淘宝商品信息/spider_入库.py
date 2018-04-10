@@ -26,8 +26,6 @@ s:0+44
 
 '''
 
-DATA = []
-
 
 def main():
     show_info = input("请输入要查询的商品名称：")
@@ -41,7 +39,7 @@ def main():
 
     # 循环页数
     for page in range(num):
-        print('------第%s页:----------' % str(page + 1))
+
         # 拼装地址
         url = "https://s.taobao.com/search?q={}&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset={}&ntoffset={}&p4ppushleft=1%2C48&s={}".format(
             show_info, str(6 - (page * 3)), str(6 - (page * 3)), str(page * 44))
@@ -89,15 +87,8 @@ def main():
                 # 添加数据
                 cs.execute(sql)
             except Exception as e:
-                # 创建sql语句
-                sql = "insert into taobaoinfo(title,price,sales,isfee,istmall,area,name) values ('{}','{}','{}','{}','{}','{}','{}')".format(
-                    str(title), temp['view_price'], str(view_sales),
-                    temp['view_fee'], temp['isTmall'],
-                    temp['area'],
-                    temp['name'], )
-                # 添加数据
-                cs.execute(sql)
-
+                print(e)
+        print('------第%s页下载完成----------' % str(page + 1))
         # 提交操作
         conn.commit()
 
