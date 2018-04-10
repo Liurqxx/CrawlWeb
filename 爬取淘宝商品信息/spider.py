@@ -4,6 +4,7 @@ import requests
 import re
 import json
 import urllib
+from pymysql import *
 
 '''
     获取淘宝商品信息
@@ -23,24 +24,6 @@ bcoffset=3&ntoffset=3&p4ppushleft=1%2C48&s=44
 bcoffset和ntoffset 6-3->>
 s:0+44
 
-
-
-_ksTS:1523284693414_238
-callback:jsonp239
-ajax:true
-m:customized
-stats_click:search_radio_all:1
-q:衣服男
-ntoffset:6
-p4ppushleft:1,48
-s:36
-imgfile:
-initiative_id:staobaoz_20180409
-bcoffset:-1
-js:1
-ie:utf8
-rn:59f4f7e48f2f86d861c50a211d378a7e
-
 '''
 
 DATA = []
@@ -50,6 +33,12 @@ def main():
     show_info = input("请输入要查询的商品名称：")
     num = int(input("请输入要获取的页数:"))
     show_info = urllib.request.quote(show_info)
+
+    # 创建Connection连接
+    conn = connect(host='localhost', port=3306, database='taobao', user='root', password='000000', charset='utf8')
+    # 获得Cursor对象
+    cs = conn.cursor()
+
     # 循环页数
     for page in range(num):
         print('------第%s页:----------' % str(page + 1))
@@ -65,6 +54,7 @@ def main():
         # print(html)
         # 正则匹配出数据
         content = re.findall(r'g_page_config = (.*?)g_srp_loadCss', html, re.S)[0].strip()[:-1]
+        # print(content)
         # content = content[:-1]
         # 格式化json
         content = json.loads(content)
@@ -73,18 +63,47 @@ def main():
         # 提取数据
         # 标题 标价 购买人数 是否包邮 是否天猫 地区 店名 url
         for item in data_list:
-            # print(item)
-            temp = {
-                'title': item['title'],
-                'view_price': item['view_price'],
-                'view_sales': item['view_sales'],
-                'view_fee': '否' if float(item['view_fee']) else '是',
-                'isTmall': '是' if item['shopcard']['isTmall'] else '否',
-                'area': item['item_loc'],
-                'name': item['nick'],
-                'detail_url': item['detail_url'],
-            }
-            print(temp)
+            try:
+                # 提取数据保存到字典中
+                temp = {
+                    'title': item['title'],
+                    'view_price': item['view_price'],
+                    'view_sales': item['view_sales'],
+                    'view_fee': '否' if float(item['view_fee']) else '是',
+                    'isTmall': '是' if item['shopcard']['isTmall'] else '否',
+                    'area': item['item_loc'],
+                    'name': item['nick'],
+                    'detail_url': item['detail_url'],
+                }
+                title = temp['title']
+                title = re.sub(r'</?.*?>', "", title, re.S)
+                detail_url = str(temp['detail_url'])
+                view_sales = re.findall(r'(\d+)', temp['view_sales'])[0]
+                # 创建sql语句
+                sql = "insert into taobaoinfo(title,price,sales,isfee,istmall,area,name,detailurl) values ('{}','{}','{}','{}','{}','{}','{}','{}')".format(
+                    str(title), temp['view_price'], str(view_sales),
+                    temp['view_fee'], temp['isTmall'],
+                    temp['area'],
+                    temp['name'],
+                    detail_url)
+                # 添加数据
+                cs.execute(sql)
+            except Exception as e:
+                # 创建sql语句
+                sql = "insert into taobaoinfo(title,price,sales,isfee,istmall,area,name) values ('{}','{}','{}','{}','{}','{}','{}')".format(
+                    str(title), temp['view_price'], str(view_sales),
+                    temp['view_fee'], temp['isTmall'],
+                    temp['area'],
+                    temp['name'], )
+                # 添加数据
+                cs.execute(sql)
+
+        # 提交操作
+        conn.commit()
+
+    # 关闭连接
+    cs.close()
+    conn.close()
 
 
 if __name__ == '__main__':
