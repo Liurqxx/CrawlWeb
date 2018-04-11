@@ -38,7 +38,7 @@ def down_move(url):
 def main():
     num = int(input("请输入页数:"))
     # 循环产生网址
-    for page in range(1, num):
+    for page in range(1, num+1):
         # 网址
         url = 'http://www.ygdy8.net/html/gndy/oumei/list_7_' + str(page) + '.html'
         # 得到网页源代码
