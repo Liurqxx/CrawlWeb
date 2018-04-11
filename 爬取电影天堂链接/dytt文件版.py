@@ -18,7 +18,6 @@ def main():
             html = requests.get(url)
             # 指定编码
             html.encoding = 'gb2312'
-            # 提取网页源码中的下一页的网址信息
             # 得到 电影网址
             dy_data = re.findall('<a href="(.*?)" class="ulink">', html.text)  # 返回的列表
             # 循环拼接电影网址
