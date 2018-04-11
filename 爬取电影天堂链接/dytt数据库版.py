@@ -24,9 +24,6 @@ def main():
         html = requests.get(url)
         # 指定编码
         html.encoding = 'gb2312'
-        # 提取网页源码中的下一页的网址信息
-        # http://www.ygdy8.net
-        # /html/gndy/dyzz/20180314/56482.html
         # 得到 电影网址
         dy_data = re.findall('<a href="(.*?)" class="ulink">', html.text)  # 返回的列表
         # 循环拼接电影网址
@@ -43,7 +40,7 @@ def main():
                 cs.execute(sql)
                 # print(dy_link)
             except Exception as e:
-                print('没有匹配到数据', e)
+                print('数据有误', e)
     # 提交
     conn.commit()
     print('下载成功')
