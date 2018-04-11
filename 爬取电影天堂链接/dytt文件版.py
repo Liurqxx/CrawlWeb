@@ -7,23 +7,6 @@ import re
     爬取电影天堂的电影
 '''
 
-# http://www.ygdy8.net/html/gndy/oumei/list_7_2.html
-# 下载页面
-# http://www.ygdy8.net/html/gndy/dyzz/20180314/56482.html
-
-
-'''
-    Headers:
-            Accept:image/webp,image/apng,image/*,*/*;q=0.8
-            Accept-Encoding:gzip, deflate
-            Accept-Language:zh-CN,zh;q=0.9
-            Connection:keep-alive
-            Cookie:u=Y4VsWhRogA0BAAAA8MJK
-            Host:log.he2d.com
-            Referer:http://www.37cs.com/html/click/8040_2134.html
-            User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36
-'''
-
 
 def main():
     with open('move/info.txt', 'w') as file:
@@ -36,8 +19,6 @@ def main():
             # 指定编码
             html.encoding = 'gb2312'
             # 提取网页源码中的下一页的网址信息
-            # http://www.ygdy8.net
-            # /html/gndy/dyzz/20180314/56482.html
             # 得到 电影网址
             dy_data = re.findall('<a href="(.*?)" class="ulink">', html.text)  # 返回的列表
             # 循环拼接电影网址
@@ -54,7 +35,6 @@ def main():
                     print(dy_link)
                 except Exception as e:
                     print('没有匹配到数据', e)
-                    # ftp: // ygdy8: ygdy8 @ yg45.dydytt.net:3065 / 阳光电影www.ygdy8.com.华盛顿邮报.BD.720p.中英双字幕.mkv
 
     print('下载成功')
 
