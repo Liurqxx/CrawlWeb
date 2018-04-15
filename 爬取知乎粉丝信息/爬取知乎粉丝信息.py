@@ -11,11 +11,12 @@ import requests
 
 # 请求头信息
 header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:59.0) Gecko/20100101 Firefox/59.0'}
+
 def main():
 	with open('./info.txt', 'a') as ff:
-	    for m in range(0, 100, 20):
+	    for page in range(0, 100, 20):
 	        # 每一页的网址
-	        url = 'https://zhuanlan.zhihu.com/api/columns/hsmyy/followers?limit=20&offset=' + str(m)
+	        url = 'https://zhuanlan.zhihu.com/api/columns/hsmyy/followers?limit=20&offset=' + str(page)
 	        # 获取json文件
 	        html = requests.get(url, headers=header)
 	        # 打印访问网络的状态  如果返回200代表正常  否则代表错误
