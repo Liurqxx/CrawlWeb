@@ -81,8 +81,7 @@ def get_word_by_img(img):
 def baidu(question, answers):
     """搜索最有帮助的答案"""
     url = 'https://www.baidu.com/s'
-    #User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36
-    # headers ={'User-Agent','Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'}
+    # 请求头信息
     headers = {"Accept": "text/html,application/xhtml+xml,application/xml;", "Accept-Encoding": "gzip",
                "Accept-Language": "zh-CN,zh;q=0.8", "Referer": "http://www.example.com/",
                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36"}
