@@ -5,7 +5,7 @@ import re
 from pymysql import *
 
 '''
-    爬取电影天堂的电影
+    爬取电影天堂的电影并写入数据库
 '''
 
 
@@ -32,6 +32,7 @@ def main():
             xq_url = 'http://www.ygdy8.net' + m
             # 得到详情页的网页源代码
             html2 = requests.get(xq_url)
+            # 指定编码格式
             html2.encoding = 'gb2312'
             try:
                 # 提取下载链接
