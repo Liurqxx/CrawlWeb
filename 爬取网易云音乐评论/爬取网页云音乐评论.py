@@ -44,9 +44,36 @@ def main():
     }
 
 
+ 
     # 获取网页数 url:评论地址 headers:请求头信息 data：请求参数
     response = requests.post(url, headers=headers, data=user_data)
 
+    # 解析数据
+    data = json.loads(response.text)
+    # 提取数据
+    result_data = []
+    for info in data['hotComments']:
+        # 把信息保存到字典中
+        item = {
+            'nickname': info['user']['nickname'],
+            'content': info['content'],
+            'likedCount': info['likedCount']
+        }
+        # 把保存信息的字典添加到列表中
+        result_data.append(item)
+
+    # 得到对应的数据列表
+    # 名称列表
+    nickname_list = [data['nickname'] for data in result_data]
+    # 评论内容列表
+    content_list = [data['content'] for data in result_data]
+    # 点赞数量
+    likedCount_list = [data['likedCount'] for data in result_data]
+
+    # 制作点赞图表
+    makePlot(nickname_list, likedCount_list)
+    # 制作图云显示
+    makeCloud(content_list)
 
 
 
