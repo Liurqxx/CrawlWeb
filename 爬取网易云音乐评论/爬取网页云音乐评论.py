@@ -33,6 +33,7 @@ def makeCloud(content_list):
     # 制成词云图显示
     content_list = "".join(content_list)
     wordcloud = WordCloud(font_path=r'/usr/share/fonts/Fonts/simhei.ttf', max_words=300).generate(content_list)
+    # 设置相关属性
     plt.figure()
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
