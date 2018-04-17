@@ -24,6 +24,7 @@ User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like 
 def makePlot(nickname_list, likedCount_list):
     # 制成图表(柱状图)
     bar = Bar('点赞图表')
+    # 添加数据
     bar.add('点赞数', nickname_list, likedCount_list, is_stack=True, mark_line=['min', 'max'], mark_point=['average'])
     bar.render(path='./点赞图表分析.html')
 
@@ -37,6 +38,7 @@ def makeCloud(content_list):
     plt.figure()
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
+    # 保存图片
     plt.savefig('./wordclound.png')
 
 
