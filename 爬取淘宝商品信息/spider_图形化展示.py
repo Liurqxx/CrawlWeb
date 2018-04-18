@@ -29,7 +29,22 @@ def zhuzhuantu(dict_data, title_info):
     bar.add('数量', list_key, list_values, is_stack=True, mark_line=['min', 'max'], mark_point=['average'])
     # 保存html文件
     bar.render(path='./img/地区分布.html')
+    
+def bingzhuangtu(dict_data, title_info):
+    '''饼状图'''
+    list_key = []
+    list_values = []
+    for key, values in dict_data.items():
+        list_key.append(key)
+        list_values.append(values)
 
+    # 创建饼图 title_pos:标题位置
+    pie = Pie(title_info, width=900)
+
+    # 添加数据 is_random:是否随机排列颜色，默认false
+    pie.add("", list_key, list_values, is_label_show=True)
+    # pie.show_config()
+    pie.render('./img/' + title_info + '.html')
 
 def main():
     # 用于保存所有的商品信息
