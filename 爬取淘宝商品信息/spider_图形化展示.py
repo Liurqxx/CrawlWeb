@@ -14,6 +14,21 @@ from pylab import *
 
 
 
+def zhuzhuantu(dict_data, title_info):
+    '''柱状图'''
+    list_key = []
+    list_values = []
+    # 创建x和y轴数据
+    for key, values in dict_data.items():
+        list_key.append(key)
+        list_values.append(values)
+
+    # 制成图表(柱状图)
+    bar = Bar(title_info)
+    # mark_line:显示最大值和最小值  mark_point:显示平均值
+    bar.add('数量', list_key, list_values, is_stack=True, mark_line=['min', 'max'], mark_point=['average'])
+    # 保存html文件
+    bar.render(path='./img/地区分布.html')
 
 
 def main():
