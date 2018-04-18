@@ -4,62 +4,24 @@ import requests
 import re
 import json
 import urllib
-import matplotlib
+from pyecharts import Bar
+from pyecharts import Pie
 from pylab import *
 
 '''
     获取淘宝商品信息
 '''
 
-DATA = []
-# 设置字体
-zhfont = matplotlib.font_manager.FontProperties(fname='/usr/share/fonts/Fonts/STXINGKA.TTF')
 
 
-def zhuzhuantu(dict_data, title_info):
-    '''柱状图'''
-    list_key = []
-    list_values = []
-    # 创建x和y轴数据
-    for key, values in dict_data.items():
-        list_key.append(key)
-        list_values.append(values)
-    # 设置标题
-    matplotlib.pyplot.title(title_info, fontproperties=zhfont)
-    matplotlib.pyplot.bar(left=list_key, height=list_values, color='green', width=0.5)
-
-    # 保存图片
-    plt.savefig('img/' + title_info + '.png', bbox_inches='tight')
-
-    # 显示图片
-    matplotlib.pyplot.show()
-
-
-def bingzhuangtu(dict_data, title_info):
-    '''饼状图'''
-    list_key = []
-    list_values = []
-    for key, values in dict_data.items():
-        list_key.append(key)
-        list_values.append(values)
-
-    # 设置标题,中文未解决
-    matplotlib.pyplot.title(title_info, fontproperties=zhfont)
-    matplotlib.pyplot.axes(aspect=1)  # 使x y轴比例相同
-
-    explode = [0, 0.05]  # 突出某一部分区域
-    # x:分类名 labels：分类数据
-    matplotlib.pyplot.pie(x=list_values, labels=list_key, autopct='%d', explode=explode)  # autopct数据显示的格式
-    # 保存图片
-    plt.savefig('img/' + title_info + '.png', bbox_inches='tight')
-
-    matplotlib.pyplot.show()
 
 
 def main():
-    global DATA
+    # 用于保存所有的商品信息
+    DATA = []
     show_info = input("请输入要查询的商品名称：")
     num = int(input("请输入要获取的页数:"))
+    # 对商品信息加密
     show_info = urllib.request.quote(show_info)
 
     # 循环页数
@@ -83,6 +45,7 @@ def main():
         # 提取数据
         # 标题 标价 购买人数 是否包邮 是否天猫 地区 店名 url
         for item in data_list:
+            # 保存每一件商品的信息
             data = {}
             # 对title做初步处理
             title = item['title']
