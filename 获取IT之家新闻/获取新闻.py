@@ -5,7 +5,13 @@ import requests
 
 
 def main():
-	pass
+	# 数码之家信息
+    # get_digi_info()
+    print('--' * 100)
+    # get_ithome_info()
+    print('--' * 100)
+    # get_win10_info()
+    get_home_info()
 
 
 if __name__ == '__main__':
