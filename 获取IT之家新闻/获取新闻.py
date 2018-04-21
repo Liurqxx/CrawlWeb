@@ -64,6 +64,22 @@ def get_win10_info():
 
 
 
+def get_home_info():
+    url = "https://www.ithome.com/"
+    html = requests.get(url, headers=headers)
+    html.encoding = 'utf-8'
+    html = html.text
+
+    # print(html)
+    # 匹配结果
+    news_url = re.findall(
+        r'<span class="date">(.*?)</span><span class="title"><a target="_blank" href="(.*?)">(<font color=.*?>)?(.*?)</a></span></li>',
+        html, re.S)
+
+    # 输出结果
+    for i in news_url:
+        print(i[0], i[1], i[3])
+
 
 def main():
 	# 数码之家信息
