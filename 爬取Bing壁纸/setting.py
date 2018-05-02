@@ -27,7 +27,18 @@ def main():
 
     with open('./img_source/info.txt', 'r') as file:
         fr = file.read()
+    with open('./img_source/info.txt', 'r') as file:
+        fr = file.read()
+    # 设置壁纸
+    os.system(
+        'gsettings set org.gnome.desktop.background picture-uri file:/home/lrq/传智播客/PycharmProjects/爬取壁纸/img_source/bg' + fr + '.jpg')
 
+    with open('./img_source/info.txt', 'w') as file:
+        f = int(fr)
+        f += 1
+        if f % 9 == 0:
+            f = 1
+        file.write(str(f))
 
 
 
