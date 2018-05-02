@@ -9,7 +9,24 @@ import sys
         'gsettings set org.gnome.desktop.background picture-uri file:' + img_save_path + cd + '.jpg')
 
 '''
+def main():
+    fr = 0
+    # 判断文件夹是否存在
+    if not os.path.exists('./img_source'):
+        os.mkdir('./img_source')
+        os.system('touch ./img_source/info.txt')
+        try:
+            with open('./img_source/info.txt', 'w') as file:
+                file.write('1')
+        except Exception as e:
+            print(e)
 
+        finally:
+            with open('./img_source/info.txt', 'w') as file:
+                file.write('1')
+
+    with open('./img_source/info.txt', 'r') as file:
+        fr = file.read()
 
 
 
