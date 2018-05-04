@@ -28,6 +28,17 @@ def yield_video_m3u8_url_from_video_ids(video_ids):
         m3u8_url = playlist[QUALITY]['play_url']
         yield m3u8_url
 
+def get_video_ids_from_url(url):
+    """
+    回答或者文章的 url
+    """
+    html = requests.get(url, headers=HEADERS).text
+    # print(html)
+    video_ids = re.findall(r'data-lens-id="(\d+)"', html)
+    # print('11111', video_ids)
+    if video_ids:
+        return set([int(video_id) for video_id in video_ids])
+    return []
 
 
 if __name__ == '__main__':
