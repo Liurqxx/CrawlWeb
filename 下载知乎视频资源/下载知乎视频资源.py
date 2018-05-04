@@ -20,6 +20,14 @@ def download(url):
         subprocess.call(['ffmpeg', '-i', m3u8_url, filename.format(str(idx))])
 
 
+def yield_video_m3u8_url_from_video_ids(video_ids):
+    for video_id in video_ids:
+        api_video_url = 'https://lens.zhihu.com/api/videos/{}'.format(int(video_id))
+        r = requests.get(api_video_url, headers=HEADERS)
+        playlist = r.json()['playlist']
+        m3u8_url = playlist[QUALITY]['play_url']
+        yield m3u8_url
+
 
 
 if __name__ == '__main__':
