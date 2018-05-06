@@ -23,7 +23,7 @@ QUALITY = 'ld'  # 支持是 'ld' 'sd' 'hd' 分别是低清、中清、高清
 
 def get_video_ids_from_url(url):
     """
-    回答或者文章的 url
+    url地址
     """
     html = requests.get(url, headers=HEADERS).text
     # print(html)
@@ -53,6 +53,6 @@ def download(url):
 
 
 if __name__ == '__main__':
-    # 贴上你需要下载的 回答或者文章的链接
+    # 要下载的url地址
     url = 'https://www.zhihu.com/question/275611095/answer/382959285'
     download(url)
