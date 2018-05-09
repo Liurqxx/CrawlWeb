@@ -11,7 +11,7 @@ import requests
 安装ffmpeg：sudo apt install ffmpeg
 '''
 
-# 下边 cookie 请打开知乎打开浏览器开发者工具随便找一个请求复制 cookie，千万不要泄露出去
+# 请求头信息,包含cook信息
 HEADERS = {
     'cookie': '',
     # TODO
@@ -35,6 +35,7 @@ def get_video_ids_from_url(url):
 
 
 def yield_video_m3u8_url_from_video_ids(video_ids):
+	#使用生成器,目的节省内存空间
     for video_id in video_ids:
         api_video_url = 'https://lens.zhihu.com/api/videos/{}'.format(int(video_id))
         r = requests.get(api_video_url, headers=HEADERS)
