@@ -9,7 +9,7 @@ from pyecharts import Pie
 from pylab import *
 
 '''
-    获取淘宝商品信息
+    获取淘宝商品信息并做数据化分析
 '''
 
 
