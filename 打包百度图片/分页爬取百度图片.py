@@ -10,7 +10,7 @@ from gevent import monkey
 
 
 原理：
-    每次pn+30，返回一条新的json数据
+    每次pn+30，返回一条新的json数据,数据包含图片的url和downloadurl
 
 '''
 # 打补丁
