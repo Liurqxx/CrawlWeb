@@ -3,6 +3,9 @@
 import re
 import requests
 import threading
+'''
+	使用线程下载图片
+'''
 
 # 请求头
 headers = {
