@@ -11,8 +11,6 @@ from wordcloud import WordCloud
 评论地址:
 http://music.163.com/weapi/v1/resource/comments/R_SO_4_551816010?csrf_token=34814d54e40b194cff84c0569bbbb200
 
-请求头：
-User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36
 
 # post请求参数
 'params':'xL8LMVOqYZZkjIdEt3kWzTpNoVxGBZiOy23JzoDe+YwD4k/mkv6i9DmHUIRSmctYlmlAJzMtCpCYZxrL0OrEPVpY3V0iLQvNqGjMZxc0JiiYLUOFmt7bm6Uc7FQe6l6j87eS934h9XJsGZtjQ2kjfj0hWJzWBzwdP9l1wu366gjC29E9l4Hhc6UgLRiRGx6vazgIjen7QW2xSKmz7OJDR2a0TSxdtK9fYL0PAxo4UZY='
