@@ -12,6 +12,7 @@ import requests
 '''
 
 # 请求头信息,包含cook信息
+# 对于cooki信息,打开谷歌浏览器中的抓包工具复制一份就可以
 HEADERS = {
     'cookie': '',
     # TODO
