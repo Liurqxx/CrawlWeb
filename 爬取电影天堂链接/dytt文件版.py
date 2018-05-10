@@ -30,6 +30,7 @@ def main():
                 try:
                     # 提取下载链接
                     dy_link = re.findall('<a href="(.*?)">.*?</a></td>', html2.text)[0]
+                    # 往文件写入数据
                     file.write(dy_link + '\r\n')
                     print(dy_link)
                 except Exception as e:
