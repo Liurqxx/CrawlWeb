@@ -55,5 +55,6 @@ def download(url):
 
 if __name__ == '__main__':
     # 要下载的url地址
-    url = 'https://www.zhihu.com/question/275611095/answer/382959285'
+    # url = 'https://www.zhihu.com/question/275611095/answer/382959285'
+    url = input("请输入下载的url:")
     download(url)
