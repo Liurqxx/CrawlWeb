@@ -17,7 +17,7 @@ from gevent import monkey
 monkey.patch_all()
 
 
-class Demo(object):
+class Down(object):
     # 初始化数据 搜索的关键字 页数
     def __init__(self, info, page):
         self.info = info
@@ -98,7 +98,7 @@ class Demo(object):
 
 if __name__ == '__main__':
     # 创建实例对象并初始化参数
-    demo = Demo('Python', 2)
+    down = Down('Python', 2)
     # 开启下载任务
-    demo.start()
+    down.start()
     print('下载成功')
