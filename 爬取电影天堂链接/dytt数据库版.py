@@ -11,14 +11,14 @@ from pymysql import *
 
 
 def main():
-    # 创建Connection连接
+    # 创建Connection链接,链接数据库
     conn = connect(host='localhost', port=3306, database='movielink', user='root', password='000000', charset='utf8')
     # 获得Cursor对象
     cs = conn.cursor()
     num = int(input("请输入页数:"))
     # 循环产生网址
     for page in range(1, num):
-        # 网址
+        # 下载页面url
         url = 'http://www.ygdy8.net/html/gndy/oumei/list_7_' + str(page) + '.html'
         # 得到网页源代码
         html = requests.get(url)
@@ -37,6 +37,7 @@ def main():
             try:
                 # 提取下载链接
                 dy_link = re.findall('<a href="(.*?)">.*?</a></td>', html2.text)[0]
+                # 创建sql语句
                 sql = "insert into moveinfo(moveurl) values ('{}')".format(str(dy_link))
                 cs.execute(sql)
                 # print(dy_link)
