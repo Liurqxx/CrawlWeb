@@ -21,6 +21,7 @@ import threading
 def down_move(url):
     # 启动迅雷下载
     # 传入两个参数：path和下载连接
+    # path:迅雷的安装路径
     os.system("D:\程序\Program\Thunder.exe -StartType:DesktopIcon \"%s\"" % url)
 
 
