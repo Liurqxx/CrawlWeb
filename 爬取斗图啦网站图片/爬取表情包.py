@@ -46,7 +46,9 @@ def main():
 
         # 开启线程下载每页图片
         t1 = threading.Thread(target=down_img, args=(url_title_list,))
+        # 开启线程
         t1.start()
+        
     t1.join()
 
 
