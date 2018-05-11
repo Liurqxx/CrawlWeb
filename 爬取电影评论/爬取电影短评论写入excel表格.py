@@ -16,6 +16,26 @@ import xlsxwriter
 data_cursor = 1
 
 
+# 创建工作文件
+def write_data():
+    # 删除文件
+    if os.path.exists('./复仇者联盟3评论信息.xlsx'):
+        os.remove('./复仇者联盟3评论信息.xlsx')
+
+    # 创建工作文件
+    workbooke = xlsxwriter.Workbook('复仇者联盟3评论信息.xlsx')
+    # 创建工作表
+    worksheet = workbooke.add_worksheet()
+    # 写标题
+    worksheet.write(0, 0, '是否有用')
+    worksheet.write(0, 1, '是否看过')
+    worksheet.write(0, 2, '作者')
+    worksheet.write(0, 3, '时间')
+    worksheet.write(0, 4, '内容')
+
+    return workbooke, worksheet
+
+
 def main():
     global data_cursor
     try:
@@ -42,6 +62,16 @@ def main():
                 r'.*?<p class=""> (.*?)</p>',
                 html, re.S)
             # print(result, len(result))
+
+            for index, item in enumerate(result):
+                #       用用      作者      看过      时间      评论内容
+                # print(item[0], item[1], item[2], item[3], item[4].strip(''))
+                # 写入数据
+                worksheet.write(data_cursor, 0, item[0])
+                worksheet.write(data_cursor, 1, item[2])
+                worksheet.write(data_cursor, 2, item[1])
+                worksheet.write(data_cursor, 3, item[3])
+                worksheet.write(data_cursor, 4, item[4])
                 data_cursor += 1
             print('第{}页完成...'.format(page + 1))
             # 每一页之间间隔1秒
