@@ -6,16 +6,68 @@ import requests
 import re
 import random
 
-# 微信公众号账号
-user = "2990599771@qq.com"
+# 前提得有一个公众号
+user = "你的公众号账号"
 # 公众号密码
-password = "154439LRQ"
+password = "密码"
 
 
 # 爬取微信公众号文章，并存在本地文本中
 def get_content(query):
     # query为要爬取的公众号名称
+    # 公众号主页
+    url = 'https://mp.weixin.qq.com'
+    # 设置headers
+    header = {
+        "HOST": "mp.weixin.qq.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0"
+    }
 
+    # cookies信息,登录微信公众号主页使用抓包工具就可以获取
+    cookies = {
+        "Cookie": "cookie值"}
+
+    # 登录之后的微信公众号首页url变化为：https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN&token=1849751598，从这里获取token信息
+    response = requests.get(url=url, cookies=cookies)
+    token = re.findall(r'token=(\d+)', str(response.url))[0]
+
+    # 搜索微信公众号的接口地址
+    search_url = 'https://mp.weixin.qq.com/cgi-bin/searchbiz?'
+    # 搜索微信公众号接口需要传入的参数，有三个变量：微信公众号token、随机数random、搜索的微信公众号名字
+    query_id = {
+        'action': 'search_biz',
+        'token': token,
+        'lang': 'zh_CN',
+        'f': 'json',
+        'ajax': '1',
+        'random': random.random(),
+        'query': query,
+        'begin': '0',
+        'count': '5'
+    }
+    # 打开搜索微信公众号接口地址，需要传入相关参数信息如：cookies、params、headers
+    search_response = requests.get(search_url, cookies=cookies, headers=header, params=query_id)
+    # 取搜索结果中的第一个公众号
+    lists = search_response.json().get('list')[0]
+    # 获取这个公众号的fakeid，后面爬取公众号文章需要此字段
+    fakeid = lists.get('fakeid')
+
+    # 微信公众号文章接口地址
+    appmsg_url = 'https://mp.weixin.qq.com/cgi-bin/appmsg?'
+    # 搜索文章需要传入几个参数：登录的公众号token、要爬取文章的公众号fakeid、随机数random
+    query_id_data = {
+        'token': token,
+        'lang': 'zh_CN',
+        'f': 'json',
+        'ajax': '1',
+        'random': random.random(),
+        'action': 'list_ex',
+        'begin': '0',  # 不同页，此参数变化，变化规则为每页加5
+        'count': '5',
+        'query': '',
+        'fakeid': fakeid,
+        'type': '9'
+    }
     # 打开搜索的微信公众号文章列表页
     appmsg_response = requests.get(appmsg_url, cookies=cookies, headers=header, params=query_id_data)
     # 获取文章总数
