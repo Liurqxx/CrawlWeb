@@ -17,26 +17,6 @@ def get_content(query):
     # query为要爬取的公众号名称
 
 
-
-
-    # 登录之后的微信公众号首页url变化为：https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN&token=1849751598，从这里获取token信息
-    response = requests.get(url=url, cookies=cookies)
-    token = re.findall(r'token=(\d+)', str(response.url))[0]
-
-    # 搜索微信公众号的接口地址
-    search_url = 'https://mp.weixin.qq.com/cgi-bin/searchbiz?'
-    # 搜索微信公众号接口需要传入的参数，有三个变量：微信公众号token、随机数random、搜索的微信公众号名字
-    query_id = {
-        'action': 'search_biz',
-        'token': token,
-        'lang': 'zh_CN',
-        'f': 'json',
-        'ajax': '1',
-        'random': random.random(),
-        'query': query,
-        'begin': '0',
-        'count': '5'
-    }
     # 打开搜索微信公众号接口地址，需要传入相关参数信息如：cookies、params、headers
     search_response = requests.get(search_url, cookies=cookies, headers=header, params=query_id)
     # 取搜索结果中的第一个公众号
