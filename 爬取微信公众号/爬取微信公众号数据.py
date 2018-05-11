@@ -16,30 +16,6 @@ password = "154439LRQ"
 def get_content(query):
     # query为要爬取的公众号名称
 
-
-    # 打开搜索微信公众号接口地址，需要传入相关参数信息如：cookies、params、headers
-    search_response = requests.get(search_url, cookies=cookies, headers=header, params=query_id)
-    # 取搜索结果中的第一个公众号
-    lists = search_response.json().get('list')[0]
-    # 获取这个公众号的fakeid，后面爬取公众号文章需要此字段
-    fakeid = lists.get('fakeid')
-
-    # 微信公众号文章接口地址
-    appmsg_url = 'https://mp.weixin.qq.com/cgi-bin/appmsg?'
-    # 搜索文章需要传入几个参数：登录的公众号token、要爬取文章的公众号fakeid、随机数random
-    query_id_data = {
-        'token': token,
-        'lang': 'zh_CN',
-        'f': 'json',
-        'ajax': '1',
-        'random': random.random(),
-        'action': 'list_ex',
-        'begin': '0',  # 不同页，此参数变化，变化规则为每页加5
-        'count': '5',
-        'query': '',
-        'fakeid': fakeid,
-        'type': '9'
-    }
     # 打开搜索的微信公众号文章列表页
     appmsg_response = requests.get(appmsg_url, cookies=cookies, headers=header, params=query_id_data)
     # 获取文章总数
