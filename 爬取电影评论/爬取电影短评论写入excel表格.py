@@ -39,14 +39,12 @@ def write_data():
 def main():
     global data_cursor
     try:
+	# 评论页数
         page_num = int(input("请输入页数:"))
         # 创建excel文件
         workbooke, worksheet = write_data()
         for page in range(page_num):
             # 评论url地址
-            # url = "https://movie.douban.com/subject/4920389/comments?start=" + str(
-            #     page * 20) + "&limit=20&sort=new_score&status=P&percent_type="
-
             url = "https://movie.douban.com/subject/24773958/comments?start=" + str(
                 page * 20) + "&limit=20&sort=new_score&status=P&percent_type="
             # 获取网页源代码
