@@ -8,19 +8,16 @@ import time
 
 
 def main():
+    # 获取当前时间：格式：2018-04-24 20:09:12.222731
+    dt = datetime.datetime.now()
 
+    # 获取年月日并拼装
+    cd = str(dt.year) + '0' + str(dt.month) + str(dt.day)
 
-    # url地址
-    url = 'http://bingwallpaper.com/'
-    # 获取文件保存的路径信息
-    img_save_path = os.getcwd() + "/Bing/"
+    if os.path.exists("Bing"):
+        # 删除文件夹
+        shutil.rmtree("./Bing")
 
-    # 获取网页源代码
-    html = requests.get(url, headers=headers)
-    html.encoding = 'utf-8'
-    html = html.text
-    # 提取图片地址
-    img_url = re.findall(r'''class='cursor_zoom'><img src='(.*?)' alt=''', html, re.S)[0]
 
     # 下载图片
     img_data = requests.get(img_url).content
