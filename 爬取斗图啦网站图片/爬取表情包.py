@@ -3,9 +3,6 @@
 import re
 import requests
 import threading
-'''
-	使用线程下载图片
-'''
 
 # 请求头
 headers = {
@@ -33,9 +30,9 @@ def down_img(img_list):
 
 
 def main():
-	page = input("请输入页数:")
+    all_page = int(input('请输入页数:'))
     # 　循环页面
-    for i in range(1, int(page)):
+    for i in range(1, all_page):
         # 　页面url
         page_url = "http://www.doutula.com/article/list/?page=" + str(i)
         # 得到网页源代码
@@ -47,9 +44,7 @@ def main():
 
         # 开启线程下载每页图片
         t1 = threading.Thread(target=down_img, args=(url_title_list,))
-        # 开启线程
         t1.start()
-        
     t1.join()
 
 
