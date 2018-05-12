@@ -17,7 +17,16 @@ from gevent import monkey
 monkey.patch_all()
 
 
+class Demo(object):
+    # 初始化数据 搜索的关键字 页数
+    def __init__(self, info, page):
+        self.info = info
+        self.page = page
+        self.url = 'https://image.baidu.com/search/acjson'
 
+    def get_page(self):
+        '''获取每页图片信息'''
+        page_list = []
         # 得到每一页数据
         for one_page in range(30, 30 * (self.page) + 30, 30):
             # 封装json数据
