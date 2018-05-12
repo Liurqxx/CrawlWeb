@@ -4,30 +4,7 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-'''''
-目标:获取酒店名称和酒店星级
-'''
-url1 = 'http://hotels.ctrip.com/hotel/435383.html'
 
-html1 = urllib.request.urlopen(url1).read().decode('utf-8')
-
-# 1.获取酒店名称信息
-soup_name = BeautifulSoup(html1, 'lxml')
-
-hotelName = soup_name.h2.string
-print("酒店名称为:{}".format(hotelName))
-
-# 2.获取酒店星级信息
-result_star = soup_name.find_all(attrs={"class": "grade"})
-
-# print(result1)
-result_star = str(result_star)
-
-soup_star = BeautifulSoup(result_star, 'lxml')
-
-result_star = soup_star.find_all('span')
-hotelStar = result_star[0]['title']
-print("酒店星级为:{}".format(hotelStar))
 
 '''''
 目标:获取酒店最低房价和评论总数
