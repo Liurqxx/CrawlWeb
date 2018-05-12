@@ -33,8 +33,9 @@ def down_img(img_list):
 
 
 def main():
+	page = input("请输入页数:")
     # 　循环页面
-    for i in range(1, 10):
+    for i in range(1, int(page)):
         # 　页面url
         page_url = "http://www.doutula.com/article/list/?page=" + str(i)
         # 得到网页源代码
