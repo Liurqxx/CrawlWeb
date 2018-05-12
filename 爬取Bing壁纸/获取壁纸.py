@@ -8,23 +8,7 @@ import time
 
 
 def main():
-    # 获取当前时间：格式：2018-04-24 20:09:12.222731
-    dt = datetime.datetime.now()
 
-    # 获取年月日并拼装
-    cd = str(dt.year) + '0' + str(dt.month) + str(dt.day)
-
-    if os.path.exists("Bing"):
-        # 删除文件夹
-        shutil.rmtree("./Bing")
-
-    # 创建文件夹
-    os.makedirs('./Bing', exist_ok=True)
-
-    # 请求头信息
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36'
-    }
 
     # url地址
     url = 'http://bingwallpaper.com/'
