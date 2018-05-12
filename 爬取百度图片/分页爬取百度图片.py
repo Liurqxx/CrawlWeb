@@ -18,6 +18,45 @@ monkey.patch_all()
 
 
 
+        # 得到每一页数据
+        for one_page in range(30, 30 * (self.page) + 30, 30):
+            # 封装json数据
+            json_data = {
+                'tn': 'resultjson_com',
+                'ipn': 'rj',
+                'ct': 201326592,
+                'is': '',
+                'fp': 'result',
+                'queryWord': self.info,
+                'cl': 2,
+                'lm': -1,
+                'ie': 'utf-8',
+                'oe': 'utf-8',
+                'adpicid': '',
+                'st': -1,
+                'z': '',
+                'ic': 0,
+                'word': self.info,
+                's': '',
+                'se': '',
+                'tab': '',
+                'width': '',
+                'height': '',
+                'face': 0,
+                'istype': 2,
+                'qc': '',
+                'nc': 1,
+                'fr': '',
+                'pn': one_page,
+                'rn': 30,
+                'gsm': '1e',
+                '1488942260214': ''
+
+            }
+            # 把每一页数据添加到列表中
+            page_list.append(requests.get(self.url, params=json_data).json().get('data'))
+        # 返回数据列表
+        return page_list
 
     def down_img(self, img_url):
         '''下载图片'''
