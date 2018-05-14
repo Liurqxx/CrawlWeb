@@ -98,10 +98,12 @@ class Down(object):
 
 if __name__ == '__main__':
 
-	#接收用户输入的参数
-	user_info = input('请输入关键词内容:')
+    # 接收用户的输入
+    user_info = input("请输入搜索的关键字:")
+    user_page = int(input('请输入下载页数:'))
+
     # 创建实例对象并初始化参数
-    down = Down(user_info, 2)
+    demo = Demo(user_info, user_page)
     # 开启下载任务
     down.start()
     print('下载成功')
