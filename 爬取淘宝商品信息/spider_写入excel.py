@@ -11,22 +11,6 @@ import os
     获取淘宝商品信息
 '''
 
-'''
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=6&ntoffset=6&p4ppushleft=1%2C48&s=0
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=3&ntoffset=3&p4ppushleft=1%2C48&s=44
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=0&ntoffset=6&p4ppushleft=1%2C48&s=88
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=-3&ntoffset=-3&p4ppushleft=1%2C48&s=132
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=-6&ntoffset=-6&p4ppushleft=1%2C48&s=176
-
-https://s.taobao.com/search?q=%E8%A1%A3%E6%9C%8D%E7%94%B7&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset=-9&ntoffset=-3&p4ppushleft=1%2C48&s=88
-
-bcoffset=6&ntoffset=6&p4ppushleft=1%2C48&s=0
-bcoffset=3&ntoffset=3&p4ppushleft=1%2C48&s=44
-bcoffset和ntoffset 6-3->>
-s:0+44
-
-'''
-
 
 def write_data():
     # 删除文件
