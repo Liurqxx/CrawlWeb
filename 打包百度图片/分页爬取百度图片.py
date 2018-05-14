@@ -97,8 +97,11 @@ class Down(object):
 
 
 if __name__ == '__main__':
+
+	#接收用户输入的参数
+	user_info = input('请输入关键词内容:')
     # 创建实例对象并初始化参数
-    down = Down('Python', 2)
+    down = Down(user_info, 2)
     # 开启下载任务
     down.start()
     print('下载成功')
