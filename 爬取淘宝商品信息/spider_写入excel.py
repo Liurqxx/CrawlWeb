@@ -12,26 +12,7 @@ import os
 '''
 
 
-def write_data():
-    # 删除文件
-    if os.path.exists('taobaoinfo.xlsx'):
-        os.remove('taobaoinfo.xlsx')
 
-    # 创建工作文件
-    workbooke = xlsxwriter.Workbook('taobaoinfo.xlsx')
-    # 创建工作表
-    worksheet = workbooke.add_worksheet()
-    # 写标题
-    worksheet.write(0, 0, '标题')
-    worksheet.write(0, 1, '标价')
-    worksheet.write(0, 2, '购买人数')
-    worksheet.write(0, 3, '是否包邮')
-    worksheet.write(0, 4, '是否天猫')
-    worksheet.write(0, 5, '地区')
-    worksheet.write(0, 6, '店名')
-    worksheet.write(0, 7, '链接')
-
-    return workbooke, worksheet
 
 
 def main():
