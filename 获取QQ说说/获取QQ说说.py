@@ -38,7 +38,7 @@ import re
 
 def main():
     to_qq_number = input('请输入对方的qq号码:')
-    # url = 'http://user.qzone.qq.com/870469703/311'
+    #拼接url地址
     url = 'https://h5.qzone.qq.com/proxy/domain/ic2.qzone.qq.com/cgi-bin/feeds/feeds_html_module?i_uin={}&i_login_uin=2990599771&mode=4&previewV8=1&style=2&version=8&needDelOpr=true&start=0&count=10&transparence=true&hideExtend=false&showcount=5&MORE_FEEDS_CGI=http%3A%2F%2Fic2.qzone.qq.com%2Fcgi-bin%2Ffeeds%2Ffeeds_html_act_all&refer=2&paramstring=os-mac|100'.format(
         to_qq_number)
     # coookies信息
