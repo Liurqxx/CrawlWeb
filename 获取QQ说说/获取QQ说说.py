@@ -7,14 +7,6 @@ import pymongo
 import requests
 import re
 
-
-    # 判断好友空间是否设置了权限，通过判断是否存在元素ID：QM_OwnerInfo_Icon
-    try:
-        driver.find_element_by_id('QM_OwnerInfo_Icon')
-        b = True
-    except:
-        b = False
-    # 如果有权限能够访问到说说页面，那么定位元素和数据，并解析
     if b == True:
         driver.switch_to.frame('app_canvas_frame')
         content = driver.find_elements_by_css_selector('.content')
