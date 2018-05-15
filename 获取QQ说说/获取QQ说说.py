@@ -9,26 +9,7 @@ import re
 
 
 
-# 登录QQ空间
-def get_shuoshuo(qq):
-    # 建立与MongoClient的链接
-    client = pymongo.MongoClient('localhost', 27017)
-    # 得到数据库
-    db = client['shuoshuo']
-    # 得到一个数据集合
-    sheet_tab = db['sheet_tab']
 
-    chromedriver = r"E:\mycode\chromedriver.exe"
-    driver = webdriver.Chrome(chromedriver)
-    # 使用get()方法打开待抓取的URL
-    driver.get('http://user.qzone.qq.com/{}/311'.format(qq))
-    time.sleep(5)
-    # 等待5秒后，判断页面是否需要登录，通过查找页面是否有相应的DIV的id来判断
-    try:
-        driver.find_element_by_id('login_div')
-        a = True
-    except:
-        a = False
     if a == True:
         # 如果页面存在登录的DIV，则模拟登录
         driver.switch_to.frame('login_frame')
