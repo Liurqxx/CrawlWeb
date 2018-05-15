@@ -7,34 +7,6 @@ import pymongo
 import requests
 import re
 
-    if b == True:
-        driver.switch_to.frame('app_canvas_frame')
-        content = driver.find_elements_by_css_selector('.content')
-        stime = driver.find_elements_by_css_selector('.c_tx.c_tx3.goDetail')
-        for con, sti in zip(content, stime):
-            data = {
-                'time': sti.text,
-                'shuos': con.text
-            }
-            print(data)
-            sheet_tab.insert_one(data)
-        pages = driver.page_source
-        soup = BeautifulSoup(pages, 'lxml')
-
-    # 尝试一下获取Cookie，使用get_cookies()
-    cookie = driver.get_cookies()
-    cookie_dict = []
-    for c in cookie:
-        ck = "{0}={1};".format(c['name'], c['value'])
-        cookie_dict.append(ck)
-    i = ''
-    for c in cookie_dict:
-        i += c
-    print('Cookies:', i)
-
-    driver.close()
-    driver.quit()
-
 
 def main():
     to_qq_number = input('请输入对方的qq号码:')
