@@ -7,16 +7,6 @@ import pymongo
 import requests
 import re
 
-# #使用Selenium的webdriver实例化一个浏览器对象，在这里使用Phantomjs
-# driver = webdriver.PhantomJS(executable_path=r"D:\phantomjs-2.1.1-windows\bin\phantomjs.exe")
-# #设置Phantomjs窗口最大化
-# driver.maximize_window()
-
-'''
-cookie: pgv_pvid=4431548530; pac_uid=0_5a9534d8cc8b8; pgv_pvi=870469703; ptui_loginuin=2990599771@qq.com; pt2gguin=o2990599771; RK=dAx0MJ3E3W; ptcz=83410556ecde5eea311f3e5ee148c22fe8a782af807dcac16fc70771cac0f85f; _ga=GA1.2.1073515414.1525065235; ptisp=; pgv_si=s3038691328; pgv_info=ssid=s8574927730; uin=o2990599771; skey=@95yfwaLPn; p_uin=o2990599771; pt4_token=*KQfQmv1J7RWOu*NZieUSHiXpSkvmD1wgYK-Epxq*xM_; p_skey=UtwHWiVttEsr**UYnNaVXjJ2AKcLHCQqpelFu5qkNeE_; Loading=Yes
-
-user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.170 Safari/537.36
-'''
 
 
 # 登录QQ空间
