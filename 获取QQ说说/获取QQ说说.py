@@ -1,9 +1,5 @@
 # _*_ coding:utf-8 _*_
 # Author:liu
-from bs4 import BeautifulSoup
-from selenium import webdriver
-import time
-import pymongo
 import requests
 import re
 
@@ -55,5 +51,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # get_shuoshuo('870469703')
     main()
