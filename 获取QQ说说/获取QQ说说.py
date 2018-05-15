@@ -41,26 +41,10 @@ def main():
     #拼接url地址
     url = 'https://h5.qzone.qq.com/proxy/domain/ic2.qzone.qq.com/cgi-bin/feeds/feeds_html_module?i_uin={}&i_login_uin=2990599771&mode=4&previewV8=1&style=2&version=8&needDelOpr=true&start=0&count=10&transparence=true&hideExtend=false&showcount=5&MORE_FEEDS_CGI=http%3A%2F%2Fic2.qzone.qq.com%2Fcgi-bin%2Ffeeds%2Ffeeds_html_act_all&refer=2&paramstring=os-mac|100'.format(
         to_qq_number)
-    # coookies信息
+    # cookies信息,使用谷歌浏览器抓包工具得到
     cookies = {
-        'cookie': 'pgv_pvid=4431548530; pac_uid=0_5a9534d8cc8b8; pgv_pvi=7430702080; ptui_loginuin=2990599771@qq.com; pt2gguin=o2990599771; RK=dAx0MJ3E3W; ptcz=83410556ecde5eea311f3e5ee148c22fe8a782af807dcac16fc70771cac0f85f; _ga=GA1.2.1073515414.1525065235; ptisp=; pgv_si=s3038691328; pgv_info=ssid=s8574927730; Loading=Yes; __Q_w_s_hat_seed=1; __Q_w_s__QZN_TodoMsgCnt=1; zzpaneluin=; zzpanelkey=; uin=o2990599771; skey=@btmlu4tWN; p_uin=o2990599771; pt4_token=1x4Xb1Q4Qj-6B7AhTxbG41uhXJNUgRB74Im6Rz27OFE_; p_skey=2FtCQk5gW4zXp*TgXHnj*QOheoJuWK9JLV8tEEvzi*Q_; rv2=8050F5E0F064DB6006574DC52601240A12C0E22204F792FFAA; property20=993902E31CF830E2311B053C7B36A6950B78F6FB99722B45156DB2067BBF3170FBBF27EE063013CF'}
+        'cookie': '你的cookies信息'}
 
-    data = {
-        'i_uin': '870469703',
-        'i_login_uin': '2990599771',
-        'mode': '4',
-        'previewV8': '1',
-        'style': '2',
-        'version': '8',
-        'needDelOpr': 'true',
-        'transparence': 'true',
-        'hideExtend': 'false',
-        'showcount': '5',
-        'MORE_FEEDS_CGI': 'http: // ic2.qzone.qq.com / cgi - bin / feeds / feeds_html_act_all',
-        'refer': '2',
-        'paramstring': 'os - mac | 100',
-
-    }
 
     '''
         url:https://h5.qzone.qq.com/proxy/domain/ic2.qzone.qq.com/cgi-bin/feeds/feeds_html_module?i_uin=850792139&i_login_uin=2990599771&mode=4&previewV8=1&style=8&version=8&needDelOpr=true&transparence=true&hideExtend=false&showcount=5&MORE_FEEDS_CGI=http%3A%2F%2Fic2.qzone.qq.com%2Fcgi-bin%2Ffeeds%2Ffeeds_html_act_all&refer=2&paramstring=os-mac|100
