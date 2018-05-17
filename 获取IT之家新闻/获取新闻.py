@@ -28,11 +28,6 @@ def get_digi_info():
 
 
 # 获取it业界资讯信息
-def get_ithome_info():
-    url = "https://it.ithome.com/"
-    html = requests.get(url, headers=headers)
-    html.encoding = 'utf-8'
-    html = html.text
 
     # print(html)
     # 匹配结果
@@ -45,14 +40,18 @@ def get_ithome_info():
         print(i[0], i[1], i[3])
 
 
-# 获取win10之家信息
-def get_win10_info():
-    url = "https://win10.ithome.com/"
+
+def get_home_info():
+    url = "https://www.ithome.com/"
     html = requests.get(url, headers=headers)
     html.encoding = 'utf-8'
     html = html.text
 
-
+    # print(html)
+    # 匹配结果
+    news_url = re.findall(
+        r'<span class="date">(.*?)</span><span class="title"><a target="_blank" href="(.*?)">(<font color=.*?>)?(.*?)</a></span></li>',
+        html, re.S)
 
     # 输出结果
     for i in news_url:
