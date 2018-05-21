@@ -19,7 +19,30 @@ HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
 }
 
+QUALITY = 'ld'  # 支持是 'ld' 'sd' 'hd' 分别是低清、中清、高清
 
+
+def get_video_ids_from_url(url):
+    """
+    url地址
+    """
+    html = requests.get(url, headers=HEADERS).text
+    # print(html)
+    video_ids = re.findall(r'data-lens-id="(\d+)"', html)
+    # print('11111', video_ids)
+    if video_ids:
+        return set([int(video_id) for video_id in video_ids])
+    return []
+
+
+def yield_video_m3u8_url_from_video_ids(video_ids):
+	#使用生成器,目的节省内存空间
+    for video_id in video_ids:
+        api_video_url = 'https://lens.zhihu.com/api/videos/{}'.format(int(video_id))
+        r = requests.get(api_video_url, headers=HEADERS)
+        playlist = r.json()['playlist']
+        m3u8_url = playlist[QUALITY]['play_url']
+        yield m3u8_url
 
 
 def download(url):
