@@ -27,7 +27,7 @@ def get_digi_info():
         print(i[0], i[1], i[3])
 
 
-# 获取it业界资讯信息
+
 def get_ithome_info():
     url = "https://it.ithome.com/"
     html = requests.get(url, headers=headers)
