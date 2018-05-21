@@ -11,22 +11,6 @@ import threading
     爬取电影天堂的电影连接并下载
 '''
 
-# http://www.ygdy8.net/html/gndy/oumei/list_7_2.html
-# 下载页面
-# http://www.ygdy8.net/html/gndy/dyzz/20180314/56482.html
-
-
-
-
-def down_move(url):
-    # 启动迅雷下载
-    # 传入两个参数：path和下载连接
-    # path:迅雷的安装路径
-    os.system("D:\程序\Program\Thunder.exe -StartType:DesktopIcon \"%s\"" % url)
-
-
-def main():
-    num = int(input("请输入页数:"))
     # 循环产生网址
     for page in range(1, num+1):
         # 网址
