@@ -14,6 +14,20 @@ url2 = "http://m.ctrip.com/html5/hotel/HotelDetail/435383.html"
 html2 = urllib.request.urlopen(url2).read().decode('utf-8')
 
 soup_comment = BeautifulSoup(html2, 'lxml')
+# 评论总数
+result_comment = soup_comment.find_all(attrs={"class": "hd js_comment_title"})
+result_comment = str(result_comment)
+soup_comment = BeautifulSoup(result_comment, 'lxml')
+commentCounts = soup_comment.find_all('em')[1].string
+print("评论总数为:{}".format(commentCounts))
+
+'''''
+目标:获取酒店卫生评分、环境评分、服务评分、设施评分、用户推荐比、用户评分、评价内容
+'''
+
+url3 = 'http://m.ctrip.com/html5/hotel/HotelDetail/dianping/435383.html'
+
+html3 = urllib.request.urlopen(url3).read().decode('utf-8')
 
 soup_grades = BeautifulSoup(html3, 'lxml')
 
