@@ -4,16 +4,16 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-commentCounts = soup_comment.find_all('em')[1].string
-print("评论总数为:{}".format(commentCounts))
+
 
 '''''
-目标:获取酒店卫生评分、环境评分、服务评分、设施评分、用户推荐比、用户评分、评价内容
+目标:获取酒店最低房价和评论总数
 '''
+url2 = "http://m.ctrip.com/html5/hotel/HotelDetail/435383.html"
 
-url3 = 'http://m.ctrip.com/html5/hotel/HotelDetail/dianping/435383.html'
+html2 = urllib.request.urlopen(url2).read().decode('utf-8')
 
-html3 = urllib.request.urlopen(url3).read().decode('utf-8')
+soup_comment = BeautifulSoup(html2, 'lxml')
 
 soup_grades = BeautifulSoup(html3, 'lxml')
 
