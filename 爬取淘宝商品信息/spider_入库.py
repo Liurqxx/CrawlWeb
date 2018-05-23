@@ -11,6 +11,31 @@ from pymysql import *
 '''
 
 
+def main():
+    show_info = input("请输入要查询的商品名称：")
+    num = int(input("请输入要获取的页数:"))
+    show_info = urllib.request.quote(show_info)
+
+    # 创建Connection连接
+    conn = connect(host='localhost', port=3306, database='taobao', user='root', password='000000', charset='utf8')
+    # 获得Cursor对象
+    cs = conn.cursor()
+
+    # 循环页数
+    for page in range(num):
+
+        # 拼装地址
+        url = "https://s.taobao.com/search?q={}&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20180409&ie=utf8&bcoffset={}&ntoffset={}&p4ppushleft=1%2C48&s={}".format(
+            show_info, str(6 - (page * 3)), str(6 - (page * 3)), str(page * 44))
+
+        # 发送http请求
+        response = requests.get(url)
+        # 得到网页源码
+        response.encoding = 'utf-8'
+        html = response.text
+        # print(html)
+        # 正则匹配出数据
+        content = re.findall(r'g_page_config = (.*?)g_srp_loadCss', html, re.S)[0].strip()[:-1]
         # print(content)
         # content = content[:-1]
         # 格式化json
