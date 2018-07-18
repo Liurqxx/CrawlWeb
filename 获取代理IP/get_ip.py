@@ -52,7 +52,7 @@ class proxy:
             "User-Agent": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
         }
 
-        for i in range(1, 10):
+        for i in range(1, 20):
             url = 'http://www.xicidaili.com/nn/' + str(i)
             html = requests.get(url, headers=self.get_random_header()).text
             # print(html)
